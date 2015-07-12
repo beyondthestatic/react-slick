@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React from '../../../node_modules/react/lib/React.js';
 import classnames from 'classnames';
 
 export var PrevArrow = React.createClass({

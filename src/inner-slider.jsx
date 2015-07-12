@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React from '../../../node_modules/react/lib/React.js';
 import EventHandlersMixin from './mixins/event-handlers';
 import HelpersMixin from './mixins/helpers';
 import initialState from './initial-state';
@@ -48,7 +48,8 @@ export var InnerSlider = React.createClass({
     this.adaptHeight();
   },
   componentWillReceiveProps: function(nextProps) {
-    this.initialize(nextProps);
+    if(nextProps.reInit)
+      this.initialize(nextProps);
   },
   render: function () {
     var className = classnames('slick-initialized', 'slick-slider', this.props.className);

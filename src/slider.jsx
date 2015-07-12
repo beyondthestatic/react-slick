@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React from '../../../node_modules/react/lib/React.js';
 import {InnerSlider} from './inner-slider';
 import assign from 'object-assign';
 import json2mq from 'json2mq';

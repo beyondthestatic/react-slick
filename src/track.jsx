@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React from '../../../node_modules/react/lib/React.js';
 import cloneWithProps from 'react/lib/cloneWithProps';
 import assign from 'object-assign';
 import classnames from 'classnames';
