@@ -41,7 +41,14 @@ export var InnerSlider = React.createClass({
   },
   componentDidMount: function () {
     // Hack for autoplay -- Inspect Later
-    this.initialize(this.props);
+    if(this.props.reInit) {
+      // Dirty Workaround for variable width and initial slide
+      // Init the slider once, and init it again after 10 ms (to get correct initial slide)
+      this.initialize(this.props);
+      setTimeout(() => {
+        this.initialize(this.props);
+      }, 10);
+    }
     this.adaptHeight();
   },
   componentDidUpdate: function () {

@@ -51,7 +51,7 @@ var helpers = {
     var targetLeft, currentLeft;
     var callback;
 
-    if (this.state.animating === true || this.state.currentSlide === index) {
+    if ((this.props.waitForAnimate && this.state.animating === true) || this.state.currentSlide === index) {
       return;
     }
 
