@@ -15,6 +15,10 @@ module.exports = {
     path: path.join(__dirname, 'build'),
     filename: '[name]'
   },
+  externals: {
+    // require("react") is external and available
+    "react": "React"
+  }
   module: {
     loaders: [
       {test: /\.jsx$/, loaders: ['react-hot', 'babel']},
