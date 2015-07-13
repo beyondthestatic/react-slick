@@ -1,7 +1,7 @@
 'use strict';
 
-//import React from '../../../node_modules/react/lib/React.js';
-import React from 'react';
+import React from '../../../node_modules/react/lib/React.js';
+//import React from 'react';
 import classnames from 'classnames';
 
 var getDotCount = function (spec) {
