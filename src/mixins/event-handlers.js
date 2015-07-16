@@ -52,7 +52,6 @@ var EventHandlers = {
         curY: posY
       }
     });
-    e.preventDefault();
   },
   swipeMove: function (e) {
     if (!this.state.dragging) {
@@ -102,10 +101,17 @@ var EventHandlers = {
       swipeLeft: swipeLeft,
       trackStyle: getTrackCSS(assign({left: swipeLeft}, this.props, this.state))
     });
-    e.preventDefault();
+
+    // test for mostly-vertical movement, return if so
+    if (Math.abs(touchObject.curX - touchObject.startX) < Math.abs(touchObject.curY - touchObject.startY) * 0.8)
+      return;
+
+    // don't preventDefault for small horizontal movement
+    if (touchObject.swipeLength > 4) {
+      e.preventDefault();
+    }
   },
   swipeEnd: function (e) {
-    e.preventDefault();
     if (!this.state.dragging) {
       return;
     }
@@ -126,6 +132,7 @@ var EventHandlers = {
       return;
     }
     if (touchObject.swipeLength > minSwipe) {
+      e.preventDefault();
       if (swipeDirection === 'left') {
         this.slideHandler(this.state.currentSlide + this.props.slidesToScroll);
       } else if (swipeDirection === 'right') {
