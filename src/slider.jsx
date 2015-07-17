@@ -15,6 +15,9 @@ var Slider = React.createClass({
       breakpoint: null
     };
   },
+  afterInitSlider: function() {
+    this.props.afterInitSlider();
+  },
   componentDidMount: function () {
     if (this.props.responsive) {
       var breakpoints = this.props.responsive.map(breakpt => breakpt.breakpoint);
@@ -48,6 +51,7 @@ var Slider = React.createClass({
       settings = newProps[0].settings === 'unslick' ? 'unslick' : assign({}, this.props, newProps[0].settings);
     } else {
       settings = assign({}, defaultProps, this.props);
+      settings.afterInitSlider = this.afterInitSlider;
     }
     if (settings === 'unslick') {
       // if 'unslick' responsive breakpoint setting used, just return the <Slider> tag nested HTML

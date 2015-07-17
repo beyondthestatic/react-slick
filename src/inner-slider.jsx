@@ -45,9 +45,9 @@ export var InnerSlider = React.createClass({
     if(this.props.reInit) {
       // Dirty Workaround for variable width and initial slide
       // Init the slider once, and init it again after 10 ms (to get correct initial slide)
-      this.initialize(this.props);
+      this.initialize(this.props, function() {});
       setTimeout(() => {
-        this.initialize(this.props);
+        this.initialize(this.props, this.afterInitSlider);
       }, 10);
     }
     this.adaptHeight();
@@ -57,7 +57,10 @@ export var InnerSlider = React.createClass({
   },
   componentWillReceiveProps: function(nextProps) {
     if(nextProps.reInit)
-      this.initialize(nextProps);
+      this.initialize(nextProps, this.afterInitSlider);
+  },
+  afterInitSlider: function() {
+    this.props.afterInitSlider();
   },
   render: function () {
     var className = classnames('slick-initialized', 'slick-slider', this.props.className);

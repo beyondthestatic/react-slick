@@ -7,7 +7,7 @@ import {getTrackCSS, getTrackLeft, getTrackAnimateCSS} from './trackHelper';
 import assign from 'object-assign';
 
 var helpers = {
-  initialize: function (props) {
+  initialize: function (props, callback) {
     var slideCount = React.Children.count(props.children);
     var listWidth = this.refs.list.getDOMNode().getBoundingClientRect().width;
     var trackWidth = this.refs.track.getDOMNode().getBoundingClientRect().width;
@@ -34,6 +34,8 @@ var helpers = {
       this.setState({trackStyle: trackStyle});
 
       this.autoPlay(); // once we're set up, trigger the initial autoplay.
+      
+      callback();
     });
   },
   adaptHeight: function () {

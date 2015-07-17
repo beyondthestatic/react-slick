@@ -39,7 +39,10 @@ var defaultProps = {
     swipeEvent: null,
     // nextArrow, prevArrow are react componets
     nextArrow: null,
-    prevArrow: null
+    prevArrow: null,
+    afterInitSlider: function() {
+      console.log("default callback...");
+    }
 };
 
 module.exports = defaultProps;
